@@ -1,0 +1,47 @@
+openapi: 3.0.3
+info:
+  title: API de Posts
+  description: API do catálogo de publicações
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:3000
+
+paths:
+  /posts:
+    get:
+      summary: Retorna todos os posts
+      description: Lista todas as publicações cadastradas
+      responses:
+        '200':
+          description: Lista de posts retornada com sucesso
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Post'
+
+components:
+  schemas:
+    Post:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        titulo:
+          type: string
+          example: Lançamento do novo sistema
+        descricao:
+          type: string
+          example: Confira as novidades do...
+        autor:
+          type: string
+          example: Maria Silva
+        dataPublicacao:
+          type: string
+          example: 2026-04-28
+        fotoAutor:
+          type: string
+          example: https://i.pravatar.cc/150?img=1

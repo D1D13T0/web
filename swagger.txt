@@ -1,15 +1,15 @@
 openapi: 3.2.0
 info:
-  title: Swagger postmeustore - OpenAPI 3.2
+  title: Swagger postagemstore - OpenAPI 3.2
   description: |-
-    This is a sample postmeu Store Server based on the OpenAPI 3.2 specification. You can find out more about
-    Swagger at [https://swagger.io](https://swagger.io). In the third iteration of the postmeu store, we've switched to the design first approach!
+    This is a sample postagem Store Server based on the OpenAPI 3.2 specification. You can find out more about
+    Swagger at [https://swagger.io](https://swagger.io). In the third iteration of the postagem store, we've switched to the design first approach!
     You can now help us improve the API whether it's by making changes to the definition itself or to the code.
     That way, with time, we can improve the API in general, and expose some of the new features in OAS 3.2.
 
     Some useful links:
-    - [The postmeu Store repository](https://github.com/swagger-api/swagger-postmeustore)
-    - [The source API definition for the postmeu Store](https://github.com/swagger-api/swagger-postmeustore/blob/master/src/main/resources/openapi.yaml)
+    - [The postagem Store repository](https://github.com/swagger-api/swagger-postagemstore)
+    - [The source API definition for the postagem Store](https://github.com/swagger-api/swagger-postagemstore/blob/master/src/main/resources/openapi.yaml)
     - [OpenAPI 3.2 Specification](https://spec.openapis.org/oas/v3.2.0.html)
 
   termsOfService: https://swagger.io/terms/
@@ -23,20 +23,20 @@ externalDocs:
   description: Find out more about Swagger
   url: https://swagger.io
 servers:
-  - url: https://postmeustore32.swagger.io/api/v3
+  - url: https://postagemstore32.swagger.io/api/v3
     description: Production server (OAS 3.2)
-  - url: https://postmeustore-staging.swagger.io/api/v3
+  - url: https://postagemstore-staging.swagger.io/api/v3
     description: Staging server
 tags:
-  - name: postmeu
-    summary: postmeu management operations
-    description: Everything about your postmeus
+  - name: postagem
+    summary: postagem management operations
+    description: Everything about your postagems
     externalDocs:
       description: Find out more
       url: https://swagger.io
   - name: store
     summary: Store and order management
-    description: Access to postmeustore orders and inventory
+    description: Access to postagemstore orders and inventory
     externalDocs:
       description: Find out more about our store
       url: https://swagger.io
@@ -44,25 +44,25 @@ tags:
     summary: User account operations
     description: Operations about user management and authentication
 paths:
-  /postmeu:
+  /postagem:
     put:
       tags:
-        - postmeu
-      summary: Update an existing postmeu.
-      description: Update an existing postmeu by Id.
-      operationId: updatepostmeu
+        - postagem
+      summary: Update an existing postagem.
+      description: Update an existing postagem by Id.
+      operationId: updatepostagem
       requestBody:
-        description: Update an existent postmeu in the store
+        description: Update an existent postagem in the store
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/postmeu'
+              $ref: '#/components/schemas/postagem'
           application/xml:
             schema:
-              $ref: '#/components/schemas/postmeu'
+              $ref: '#/components/schemas/postagem'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/postmeu'
+              $ref: '#/components/schemas/postagem'
         required: true
       responses:
         '200':
@@ -70,14 +70,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/postmeu'
+                $ref: '#/components/schemas/postagem'
             application/xml:
               schema:
-                $ref: '#/components/schemas/postmeu'
+                $ref: '#/components/schemas/postagem'
         '400':
           description: Invalid ID supplied
         '404':
-          description: postmeu not found
+          description: postagem not found
         '422':
           description: Validation exception
         default:
@@ -87,27 +87,27 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
       security:
-        - postmeustore_auth:
-            - write:postmeus
-            - read:postmeus
+        - postagemstore_auth:
+            - write:postagems
+            - read:postagems
     post:
       tags:
-        - postmeu
-      summary: Add a new postmeu to the store.
-      description: Add a new postmeu to the store.
-      operationId: addpostmeu
+        - postagem
+      summary: Add a new postagem to the store.
+      description: Add a new postagem to the store.
+      operationId: addpostagem
       requestBody:
-        description: Create a new postmeu in the store
+        description: Create a new postagem in the store
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/postmeu'
+              $ref: '#/components/schemas/postagem'
           application/xml:
             schema:
-              $ref: '#/components/schemas/postmeu'
+              $ref: '#/components/schemas/postagem'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/postmeu'
+              $ref: '#/components/schemas/postagem'
         required: true
       responses:
         '200':
@@ -115,10 +115,10 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/postmeu'
+                $ref: '#/components/schemas/postagem'
             application/xml:
               schema:
-                $ref: '#/components/schemas/postmeu'
+                $ref: '#/components/schemas/postagem'
         '400':
           description: Invalid input
         '422':
@@ -130,16 +130,16 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
       security:
-        - postmeustore_auth:
-            - write:postmeus
-            - read:postmeus
-  /postmeu/findByStatus:
+        - postagemstore_auth:
+            - write:postagems
+            - read:postagems
+  /postagem/findByStatus:
     get:
       tags:
-        - postmeu
-      summary: Finds postmeus by status.
+        - postagem
+      summary: Finds postagems by status.
       description: Multiple status values can be provided with comma separated strings.
-      operationId: findpostmeusByStatus
+      operationId: findpostagemsByStatus
       parameters:
         - name: status
           in: query
@@ -161,12 +161,12 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/postmeu'
+                  $ref: '#/components/schemas/postagem'
             application/xml:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/postmeu'
+                  $ref: '#/components/schemas/postagem'
         '400':
           description: Invalid status value
         default:
@@ -176,16 +176,16 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
       security:
-        - postmeustore_auth:
-            - write:postmeus
-            - read:postmeus
-  /postmeu/findByTags:
+        - postagemstore_auth:
+            - write:postagems
+            - read:postagems
+  /postagem/findByTags:
     get:
       tags:
-        - postmeu
-      summary: Finds postmeus by tags.
+        - postagem
+      summary: Finds postagems by tags.
       description: Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.
-      operationId: findpostmeusByTags
+      operationId: findpostagemsByTags
       parameters:
         - name: tags
           in: query
@@ -204,12 +204,12 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/postmeu'
+                  $ref: '#/components/schemas/postagem'
             application/xml:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/postmeu'
+                  $ref: '#/components/schemas/postagem'
         '400':
           description: Invalid tag value
         default:
@@ -219,22 +219,22 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
       security:
-        - postmeustore_auth:
-            - write:postmeus
-            - read:postmeus
-  /postmeu/search:
+        - postagemstore_auth:
+            - write:postagems
+            - read:postagems
+  /postagem/search:
     query:
       tags:
-        - postmeu
-      summary: Advanced postmeu search with complex criteria
+        - postagem
+      summary: Advanced postagem search with complex criteria
       description: |-
-        Search for postmeus using complex criteria sent in the request body.
+        Search for postagems using complex criteria sent in the request body.
         The QUERY method is a new HTTP method in OAS 3.2 that allows sending
         a request body with search parameters, providing more flexibility than GET.
 
         This endpoint demonstrates the QUERY HTTP method introduced in OAS 3.2.0
         per draft-ietf-httpbis-safe-method-w-body.
-      operationId: searchpostmeus
+      operationId: searchpostagems
       parameters:
         - name: limit
           in: query
@@ -253,7 +253,7 @@ paths:
             default: 0
             minimum: 0
       requestBody:
-        description: Complex search criteria for finding postmeus
+        description: Complex search criteria for finding postagems
         required: true
         content:
           application/json:
@@ -262,7 +262,7 @@ paths:
               properties:
                 name:
                   type: string
-                  description: Filter by postmeu name (supports wildcards with *)
+                  description: Filter by postagem name (supports wildcards with *)
                   example: "Fluffy*"
                 species:
                   type: string
@@ -302,7 +302,7 @@ paths:
                   example: ["available", "pending"]
                 tags:
                   type: array
-                  description: Filter by tags (AND logic - postmeu must have all tags)
+                  description: Filter by tags (AND logic - postagem must have all tags)
                   items:
                     type: string
                   example: ["friendly", "indoor", "trained"]
@@ -374,7 +374,7 @@ paths:
                   results:
                     type: array
                     items:
-                      $ref: '#/components/schemas/postmeu'
+                      $ref: '#/components/schemas/postagem'
                   total:
                     type: integer
                     description: Total number of matching results
@@ -428,19 +428,19 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
       security:
-        - postmeustore_auth:
-            - read:postmeus
-  /postmeu/{postmeuId}:
+        - postagemstore_auth:
+            - read:postagems
+  /postagem/{postagemId}:
     get:
       tags:
-        - postmeu
-      summary: Find postmeu by identifier.
-      description: Returns a single postmeu.
-      operationId: getpostmeuById
+        - postagem
+      summary: Find postagem by identifier.
+      description: Returns a single postagem.
+      operationId: getpostagemById
       parameters:
-        - name: postmeuId
+        - name: postagemId
           in: path
-          description: ID of postmeu to return
+          description: ID of postagem to return
           required: true
           schema:
             type: integer
@@ -451,14 +451,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/postmeu'
+                $ref: '#/components/schemas/postagem'
             application/xml:
               schema:
-                $ref: '#/components/schemas/postmeu'
+                $ref: '#/components/schemas/postagem'
         '400':
           description: Invalid ID supplied
         '404':
-          description: postmeu not found
+          description: postagem not found
         default:
           description: Unexpected error
           content:
@@ -467,31 +467,31 @@ paths:
                 $ref: "#/components/schemas/Error"
       security:
         - api_key: []
-        - postmeustore_auth:
-            - write:postmeus
-            - read:postmeus
+        - postagemstore_auth:
+            - write:postagems
+            - read:postagems
     post:
       tags:
-        - postmeu
-      summary: Updates a postmeu in the store with form data.
-      description: update a postmeu via the form data.
-      operationId: updatepostmeuWithForm
+        - postagem
+      summary: Updates a postagem in the store with form data.
+      description: update a postagem via the form data.
+      operationId: updatepostagemWithForm
       parameters:
-        - name: postmeuId
+        - name: postagemId
           in: path
-          description: ID of postmeu that needs to be updated
+          description: ID of postagem that needs to be updated
           required: true
           schema:
             type: integer
             format: int64
         - name: name
           in: query
-          description: Name of postmeu that needs to be updated
+          description: Name of postagem that needs to be updated
           schema:
             type: string
         - name: status
           in: query
-          description: Status of postmeu that needs to be updated
+          description: Status of postagem that needs to be updated
           schema:
             type: string
       responses:
@@ -506,15 +506,15 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
       security:
-        - postmeustore_auth:
-            - write:postmeus
-            - read:postmeus
+        - postagemstore_auth:
+            - write:postagems
+            - read:postagems
     delete:
       tags:
-        - postmeu
-      summary: Deletes a postmeu.
-      description: delete a postmeu.
-      operationId: deletepostmeu
+        - postagem
+      summary: Deletes a postagem.
+      description: delete a postagem.
+      operationId: deletepostagem
       parameters:
         - name: api_key
           in: header
@@ -522,9 +522,9 @@ paths:
           required: false
           schema:
             type: string
-        - name: postmeuId
+        - name: postagemId
           in: path
-          description: postmeu id to delete
+          description: postagem id to delete
           required: true
           schema:
             type: integer
@@ -533,7 +533,7 @@ paths:
         '200':
           description: successful operation
         '400':
-          description: Invalid postmeu value
+          description: Invalid postagem value
         default:
           description: Unexpected error
           content:
@@ -541,20 +541,20 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
       security:
-        - postmeustore_auth:
-            - write:postmeus
-            - read:postmeus
-  /postmeu/{postmeuId}/uploadImage:
+        - postagemstore_auth:
+            - write:postagems
+            - read:postagems
+  /postagem/{postagemId}/uploadImage:
     post:
       tags:
-        - postmeu
+        - postagem
       summary: Uploads an image.
-      description: Upload an image of postmeu.
+      description: Upload an image of postagem.
       operationId: uploadFile
       parameters:
-        - name: postmeuId
+        - name: postagemId
           in: path
-          description: ID of postmeu to update
+          description: ID of postagem to update
           required: true
           schema:
             type: integer
@@ -585,14 +585,14 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
       security:
-        - postmeustore_auth:
-            - write:postmeus
-            - read:postmeus
+        - postagemstore_auth:
+            - write:postagems
+            - read:postagems
   /store/inventory:
     get:
       tags:
         - store
-      summary: Returns postmeu inventories by status.
+      summary: Returns postagem inventories by status.
       description: Returns a map of status codes to quantities.
       operationId: getInventory
       responses:
@@ -617,7 +617,7 @@ paths:
     post:
       tags:
         - store
-      summary: Place an order for a postmeu.
+      summary: Place an order for a postagem.
       description: Place a new order in the store.
       operationId: placeOrder
       requestBody:
@@ -688,10 +688,10 @@ paths:
                   type: integer
                   format: int64
                   description: Search by specific order ID
-                postmeuId:
+                postagemId:
                   type: integer
                   format: int64
-                  description: Filter by postmeu ID
+                  description: Filter by postagem ID
                 status:
                   type: array
                   description: Filter by order status
@@ -800,13 +800,13 @@ paths:
                   value:
                     orders:
                       - id: 10
-                        postmeuId: 198772
+                        postagemId: 198772
                         quantity: 7
                         shipDate: "2024-11-15T10:30:00Z"
                         status: "delivered"
                         complete: true
                       - id: 11
-                        postmeuId: 198773
+                        postagemId: 198773
                         quantity: 3
                         shipDate: "2024-11-14T14:20:00Z"
                         status: "delivered"
@@ -1128,7 +1128,7 @@ components:
           type: integer
           format: int64
           examples: [10]
-        postmeuId:
+        postagemId:
           type: integer
           format: int64
           examples: [198772]
@@ -1241,7 +1241,7 @@ components:
           type: string
       xml:
         name: tag
-    postmeu:
+    postagem:
       required:
         - name
         - photoUrls
@@ -1272,13 +1272,13 @@ components:
             $ref: '#/components/schemas/Tag'
         status:
           type: string
-          description: postmeu status in the store
+          description: postagem status in the store
           enum:
             - available
             - pending
             - sold
       xml:
-        name: postmeu
+        name: postagem
     ApiResponse:
       type: object
       properties:
@@ -1302,15 +1302,15 @@ components:
         - code
         - message
   requestBodies:
-    postmeu:
-      description: postmeu object that needs to be added to the store
+    postagem:
+      description: postagem object that needs to be added to the store
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/postmeu'
+            $ref: '#/components/schemas/postagem'
         application/xml:
           schema:
-            $ref: '#/components/schemas/postmeu'
+            $ref: '#/components/schemas/postagem'
     UserArray:
       description: List of user object
       content:
@@ -1320,14 +1320,14 @@ components:
             items:
               $ref: '#/components/schemas/User'
   securitySchemes:
-    postmeustore_auth:
+    postagemstore_auth:
       type: oauth2
       flows:
         implicit:
-          authorizationUrl: https://postmeustore3.swagger.io/oauth/authorize
+          authorizationUrl: https://postagemstore3.swagger.io/oauth/authorize
           scopes:
-            "write:postmeus": modify postmeus in your account
-            "read:postmeus": read your postmeus
+            "write:postagems": modify postagems in your account
+            "read:postagems": read your postagems
     api_key:
       type: apiKey
       name: api_key
