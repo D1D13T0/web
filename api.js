@@ -11,5 +11,5 @@ app.get('/', (req, res) => {
 });
 
 app.listen(3000, () => {
-  console.log('modificacao teste at http://localhost:3000')
+  console.log('running at http://localhost:3000')
 })
